@@ -29,6 +29,3 @@ VBoxManage createmedium --filename %runtime_hdd% --size 4096 --format VHD
 
 echo "attaching created HDD to Sata Port 0 where we will install TwinCAT BSD"
 VBoxManage storageattach %vmname% --storagectl "SATA" --device 0 --port 0 --type  hdd --medium %runtime_hdd%
-
-echo "setting newtorking to hostonly"
-VBoxManage.exe modifyvm  %vmname% --nic1 hostonly
