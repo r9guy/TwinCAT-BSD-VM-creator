@@ -29,7 +29,7 @@ PS C:\YOUR_FOLDER\.\Create-TcBsdVM.ps1 MyLovelyTcBSD TCBSD-x64-12-40411.iso
 If VMs network defaults to `NAT`, you may not be able to connect to the PLC. Therefore you should set the virtual network either to `Host-Only Adapter` if you are working with the PLC only from the host computer; or `Bridged Adpater` to set up a physical connection to the outside network.
 
 ![Host only](assets/pics/host-only.png)
-![Bridged](assets/pics/host-only.png)
+![Bridged](assets/pics/bridged.png)
 
 
 
