@@ -13,8 +13,6 @@ set sink=%vmdirectory%\%installer_image:"=%
 set source=%current_directory%%sourcefilename:"=%
 
 
-echo "converting img image to virtualbox bootable HDD image"
-VBoxManage convertfromraw "%source%" "%sink%" --format VHD
 
 :recreatevm
 echo "creating Virtual Machine TwinCAT 3 BSD"
@@ -27,12 +25,21 @@ if  ERRORLEVEL 1    (
 
 VBoxManage modifyvm %vmname% --memory 2048 --vram 128 --acpi on --hpet on --graphicscontroller vmsvga --firmware efi64
 :recreateIf
-VBoxManage modifyvm %vmname% --nic1 hostonly --hostonlyadapter1 vboxnet1
+VBoxManage modifyvm %vmname% --nic1 hostonly --hostonlyadapter1 none
 if ERRORLEVEL 1 (
     echo host interface doesnt exist, creating one
     VBoxManage hostonlyif create
     goto recreateIf
 )
+
+
+
+
+echo "converting img image to virtualbox bootable HDD image"
+VBoxManage convertfromraw "%source%" "%sink%" --format VHD
+
+
+
 VBoxManage modifyvm %vmname% --nic2 nat
 
 
